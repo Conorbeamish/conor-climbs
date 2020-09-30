@@ -1,2 +1,5 @@
 # conor-climbs
-A personal climbing blog
+
+* Authored by Conor Beamish 
+
+A personal climbing blog built using Gatsby and WordPress as a headless CMS
