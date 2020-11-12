@@ -16,6 +16,11 @@ const NavStyles = styled.div`
     font-family: Acme;
     place-items: center;
   }
+  .on-page{
+    &[aria-current="page"]{
+      color: red;
+    }
+  }
 `;
 
 const Nav = () => {
@@ -24,10 +29,10 @@ const Nav = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link className="on-page" to="/">Home</Link>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <Link className="on-page" to="/blog">Blog</Link>
           </li>
           <li>
             <Link to="/">
@@ -35,10 +40,10 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/">Home</Link>
+            <Link className="on-page" to="/news">What's New</Link>
           </li>
           <li>
-            <Link to="/">Home</Link>
+            <Link className="on-page" to="/about">About</Link>
           </li>
         </ul>
       </nav>

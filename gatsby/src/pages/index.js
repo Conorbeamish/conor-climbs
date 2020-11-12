@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 const IndexPage = () => (
   <>
-    <h1>Hello</h1>
+    <h2>Index</h2>
   </>
 )
 
