@@ -19,7 +19,8 @@ export default{
       options: {
         source: "name",
         maxLength: 100,
-      }
+      },
+      validation: Rule => Rule.required()
     },
   ],
   

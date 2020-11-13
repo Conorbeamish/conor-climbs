@@ -4,17 +4,44 @@ import {Link} from "gatsby";
 import styled from "styled-components";
 
 const BlogThumbnailStyles = styled.div`
-  border: 2px solid var(--black);
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  time {
+    font-style: italic;
+  }
+  h3 {
+    margin: 0.5rem 0 0.5rem 0;
+  }
+  a {
+    font-weight: bold;
+    text-align: right;
+    :hover{
+      color: var(--grey)
+    }
+  }
+  p{
+    display:flex;
+    justify-content: space-between;
+    color: var(--grey);
+  }
 `;
+
 
 const BlogThumbnail = ({blog}) => {
   return ( 
     <BlogThumbnailStyles>
-      <h4>{blog.name}</h4>
-      <time>{blog.date}</time>
-      <p>{blog.description}</p>
-      <Img fixed={blog.thumbnail_image?.asset.fixed} alt={blog.name} />
-      <Link to="/">Read More...</Link>
+      <Img fluid={blog.thumbnail_image?.asset.fluid} alt={blog.name} />
+      <h3>{blog.name}</h3>
+      <div>
+        <time>{blog.date}</time>{
+          blog.category.map(category => (
+            <span key={category.id}> | {category.name}</span>
+          ))
+        }
+      </div>
+      <p>{blog.description}...</p>
+      <Link to="/">...Read More</Link>
     </BlogThumbnailStyles>
   );
 }

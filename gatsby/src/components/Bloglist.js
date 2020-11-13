@@ -4,8 +4,16 @@ import styled from "styled-components";
 
 const BlogListStyles = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media only screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 const Bloglist = ({blogs}) => {
