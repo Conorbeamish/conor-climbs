@@ -15,7 +15,6 @@ const BlogThumbnailStyles = styled.div`
   }
   a {
     font-weight: bold;
-    text-align: right;
     :hover{
       color: var(--grey)
     }
@@ -41,7 +40,7 @@ const BlogThumbnail = ({blog}) => {
         }
       </div>
       <p>{blog.description}...</p>
-      <Link to="/">...Read More</Link>
+      <Link to={`/blog/${blog.slug.current}`}>Read More <span className="arrow">➡</span></Link>
     </BlogThumbnailStyles>
   );
 }

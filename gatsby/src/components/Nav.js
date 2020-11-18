@@ -9,6 +9,9 @@ const NavStyles = styled.div`
      font-family: Acme;
      src: url(${font});
    }
+  nav{
+    text-align: center;
+  }
   ul  {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 1fr 1fr;

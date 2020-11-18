@@ -1,7 +1,31 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+const path = require("path");
 
-// You can delete this file if you're not using it
+async function turnBlogIntoPages({graphql, actions}){
+  const blogTemplate = path.resolve("./src/templates/Blog.js");
+  //Query Pages
+  const {data} = await graphql(`
+    query {
+      blogs: allSanityBlog{
+        nodes{
+          name
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+  data.blogs.nodes.forEach((blog) => {
+    actions.createPage({
+      path: `blog/${blog.slug.current}`,
+      component: blogTemplate,
+      context: {
+        slug: blog.slug.current,
+      }
+    })
+  })
+}
+
+exports.createPages = async function(params){
+  await turnBlogIntoPages(params);
+}

@@ -13,7 +13,6 @@ const LogoStyles = styled.div`
     display: flex;
     place-items: center;
     min-height: 5rem;
-    background-color: red;
   }
 `
 
@@ -38,8 +37,9 @@ const Logo = () => {
   return (
     <LogoStyles>
       <BackgroundImage fluid={imageData}>
-        <h1>Conor Climbs</h1>
+        
       </BackgroundImage>
+      <h1>Conor Climbs</h1>
     </LogoStyles>
   );
 }
