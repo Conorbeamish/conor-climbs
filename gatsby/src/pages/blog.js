@@ -2,7 +2,9 @@ import React from 'react';
 import {graphql} from "gatsby";
 import Bloglist from '../components/BlogList';
 
+
 const Blog = ({data}) => {
+
   const blogs = data.blogs.nodes
   return ( 
     <>
@@ -42,20 +44,6 @@ export const query = graphql`
             ...GatsbySanityImageFluid
           }
         }
-      }
-      image_2 {
-        _key
-        _type
-        _rawAsset
-        _rawHotspot
-        _rawCrop
-      }
-      image_1 {
-        _key
-        _type
-        _rawAsset
-        _rawHotspot
-        _rawCrop
       }
       slug {
         current
