@@ -20,7 +20,7 @@ const NavStyles = styled.div`
   }
   .on-page{
     &[aria-current="page"]{
-      color: red;
+      color: var(--grey);
     }
   }
 `;

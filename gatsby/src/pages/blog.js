@@ -2,24 +2,40 @@ import React, {useState} from 'react';
 import {graphql} from "gatsby";
 import Bloglist from '../components/BlogList';
 import CategoryFilter from '../components/CategoryFilter';
+import styled from 'styled-components';
 
-
+const BlogPageStyles = styled.div`
+  button{
+    font-size: 1rem;
+    color: var(--black);
+    padding: 0;
+    margin: 0.5rem;
+  }
+  .active {
+    border-bottom: 1px solid var(--black);
+  }
+`
 const Blog = ({data}) => {
 
-  const [sort, setSort] = useState("ASC")
+  const [sort, setSort] = useState("DSC");
 
   const blogs = data.blogs.nodes
 
+  const blogsASC = blogs.slice().sort((a,b) => new Date(a.date) - new Date(b.date));
+
+  const blogsDSC =  blogs.slice().sort((a,b) => new Date(b.date) - new Date(a.date));
+
   return ( 
-    <>
+    <BlogPageStyles>
       <h2>Blog</h2>
       <CategoryFilter />
       <div>
-        <button onClick={()=>setSort("ASC")}>Newest</button>
-        <button onClick={()=>setSort("DESC")}>Oldest</button>
+        <button onClick={()=>setSort("DSC")} className={sort === "DSC" && "active"}>Newest</button>
+        |
+        <button onClick={()=>setSort("ASC")} className={sort=== "ASC" && "active"}>Oldest</button>
       </div>
-      <Bloglist blogs={blogs} />
-    </> 
+      <Bloglist blogs={sort === "ASC" ? blogsASC : blogsDSC} />
+    </BlogPageStyles> 
   );
 }
 
@@ -36,8 +52,8 @@ export const query = graphql`
         }
       }
       # sort:{
-      #   # fields: [date]
-      #   # order: DESC
+      #   fields: [date]
+      #   order: ASC
       # }
     ) {
     nodes {

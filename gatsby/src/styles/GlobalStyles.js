@@ -34,8 +34,19 @@ const GlobalStyles = createGlobalStyle`
   } 
 
   h1, h2, h3, h4 {
-    font-family: acme;
+    font-family: Acme;
     letter-spacing: 0.075rem;
+  }
+  
+  button {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+    font-family: Raleway;
+    &:hover{
+      cursor: pointer;
+    }
   }
 `
  
